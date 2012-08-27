@@ -9,7 +9,9 @@
   <meta name="author" content="subdragon">
 
   
-  <meta name="description" content="赞助“中国好声音”只是加多宝密集营销攻势的一块阵地。在电视屏幕之外，在“中国好声音”之前，加多宝早都开始大规模“去王老吉”运动——从渠道到终端到品牌塑造。尽管7月13日，北京市第一中级人民法院才终审裁定“王老吉”商标归广药，但从今年3月起，在其最新的广告宣传上，已经不再出现任何和“王老吉” &hellip;">
+  <meta name="description" content="腾讯开放平台API接口的编码问题 Aug 27th, 2012 by subdragon 在接入腾讯开放平台oauth
+2.0的时候遇到了一个小编码问题。用python的requests库请求得到的用户信息里面的nickname总是乱码。经过调试，发现是腾讯的服务器没有遵守RFC
+2616而导致 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -21,9 +23,11 @@
   <link rel="canonical" href="http://chenyin.github.com/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/javascripts/blackboard.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
   <script src="/javascripts/ender.js"></script>
   <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <script src="/javascripts/rainbow.js" type="text/javascript"></script>
   <link href="/atom.xml" rel="alternate" title="sub的博客" type="application/atom+xml">
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
 <!--
@@ -80,6 +84,68 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/blog/2012/08/27/teng-xun-kai-fang-ping-tai-apijie-kou-de-bian-ma-wen-ti/">腾讯开放平台API接口的编码问题</a>
+    
+        <span class="author">
+          
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-08-27T15:47:00+08:00" pubdate data-updated="true">Aug 27<span>th</span>, 2012</time>
+          <br/>by subdragon
+        </span>
+      </h1>
+    
+      <p class="meta">
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>在接入腾讯开放平台oauth
+2.0的时候遇到了一个小编码问题。用python的requests库请求得到的用户信息里面的nickname总是乱码。经过调试，发现是腾讯的服务器没有遵守<a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec3.html#sec3.7.1">RFC
+2616</a>而导致。</p>
+
+<p><a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec3.html#sec3.7.1">RFC 2616</a>
+规定如果HTTP的header信息里面没有指定charset，并且Content-Type包含text的时候，默认的编码应该是ISO-8859-1。腾讯使用了UTF8编码，却没有在header显式指定charset，因此导致严格遵守标准的requests库解析出错。</p>
+
+<p>btw：requests对encoding的解析非常成熟，首先检查响应头的编码，其次会用chardet去猜内容的编码。</p>
+
+<p>以下是请求get_user_info的时候腾讯的api服务器返回的header信息：</p>
+
+<pre>
+<code>
+{'date': 'Mon, 27 Aug 2012 08:20:57 GMT', 'connection': 'keep-alive',
+'content-type': 'text/html', 'content-length': '367', 'server':
+'tnginx/1.0.1_r1'}
+</code>
+</pre>
+
+
+<p>看得出来，腾讯定制了nginx服务器。</p>
+
+<p>希望腾讯可以早点fix这个bug。</p>
+</div>
+  
+  
+
+
+      <a href="/blog/2012/08/27/teng-xun-kai-fang-ping-tai-apijie-kou-de-bian-ma-wen-ti/#disqus_thread">Comments</a>
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/2012/08/03/ni-hao-octopress/">你好 Octopress</a>
     
         <span class="author">
@@ -106,14 +172,9 @@
   </header>
 
 
-  <div class="entry-content"><p>赞助“中国好声音”只是加多宝密集营销攻势的一块阵地。在电视屏幕之外，在“中国好声音”之前，加多宝早都开始大规模“去王老吉”运动——从渠道到终端到品牌塑造。尽管7月13日，北京市第一中级人民法院才终审裁定“王老吉”商标归广药，但从今年3月起，在其最新的广告宣传上，已经不再出现任何和“王老吉”相关的字眼，取而代之以“加多宝出品”的字样，广告语也从以前的“怕上火，喝王老吉”变更为“正宗凉茶，加多宝出品”。</p>
-
+  <div class="entry-content"><p>你好 octopress.</p>
 </div>
   
-  
-    <footer>
-      <a rel="full-article" href="/blog/2012/08/03/ni-hao-octopress/">更多 &rarr;</a>
-    </footer>
   
 
 
