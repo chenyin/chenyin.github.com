@@ -4,7 +4,7 @@
   <title><![CDATA[sub的博客]]></title>
   <link href="http://chenyin.github.com/atom.xml" rel="self"/>
   <link href="http://chenyin.github.com/"/>
-  <updated>2012-08-27T17:56:33+08:00</updated>
+  <updated>2012-09-08T22:54:50+08:00</updated>
   <id>http://chenyin.github.com/</id>
   <author>
     <name><![CDATA[subdragon]]></name>
@@ -12,6 +12,28 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[解决PIL库的jpeg包的问题]]></title>
+    <link href="http://chenyin.github.com/blog/2012/09/08/jie-jue-pilku-de-jpegbao-de-wen-ti/"/>
+    <updated>2012-09-08T22:32:00+08:00</updated>
+    <id>http://chenyin.github.com/blog/2012/09/08/jie-jue-pilku-de-jpegbao-de-wen-ti</id>
+    <content type="html"><![CDATA[<p>在mac上安装python的图像处理库PIL后，报了一个错：</p>
+
+<pre><code>"Python Imaging Library (PIL) Decoder jpeg not available"</code></pre>
+
+
+<p>这是因为系统没有libjpeg库或者PIL没有找到该库，解决办法是先安装libjpeg：</p>
+
+<pre><code>brew install libjpeg</code></pre>
+
+
+<p>然后下载<a href="http://www.pythonware.com/products/pil/">PIL源码</a>，修改setup.py的JPEG_ROOT为/usr/local/Cellar/jpeg/8d/(这是brew安装libjpeg的路径)，然后重新手工安装PIL即可：</p>
+
+<pre><code>sudo python setup.py install</code></pre>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[腾讯开放平台API接口的编码问题]]></title>

@@ -6,11 +6,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="google-site-verification" content="hKz14RsoEmgCXzKqZmei4xMFh_S5WV0jil_TGt-sn9Y" />
-  <title>sub的博客</title>
+  <title>解决PIL库的jpeg包的问题 - sub的博客</title>
   <meta name="author" content="subdragon">
 
   
-  <meta name="description" content="解决PIL库的jpeg包的问题 Sep 8th, 2012 by subdragon 在mac上安装python的图像处理库PIL后，报了一个错： "Python Imaging Library (PIL) Decoder jpeg not available" &hellip;">
+  <meta name="description" content="在mac上安装python的图像处理库PIL后，报了一个错： "Python Imaging Library (PIL) Decoder jpeg not available" 这是因为系统没有libjpeg库或者PIL没有找到该库，解决办法是先安装libjpeg： brew install &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +19,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://chenyin.github.com/">
+  <link rel="canonical" href="http://chenyin.github.com/blog/2012/09/08/jie-jue-pilku-de-jpegbao-de-wen-ti/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/javascripts/blackboard.css" media="screen, projection" rel="stylesheet" type="text/css">
@@ -87,15 +87,12 @@
 </nav>
   <div id="main">
     <div id="content">
-      <div class="blog-index">
+      <div>
+<article class="hentry" role="article">
   
-  
-  
-    <article>
-      
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2012/09/08/jie-jue-pilku-de-jpegbao-de-wen-ti/">解决PIL库的jpeg包的问题</a>
+      <h1 class="entry-title">解决PIL库的jpeg包的问题
     
         <span class="author">
           
@@ -121,7 +118,7 @@
   </header>
 
 
-  <div class="entry-content"><p>在mac上安装python的图像处理库PIL后，报了一个错：</p>
+<div class="entry-content"><p>在mac上安装python的图像处理库PIL后，报了一个错：</p>
 
 <pre><code>"Python Imaging Library (PIL) Decoder jpeg not available"</code></pre>
 
@@ -136,121 +133,34 @@
 <pre><code>sudo python setup.py install</code></pre>
 
 </div>
-  
-  
 
 
-      <a href="/blog/2012/09/08/jie-jue-pilku-de-jpegbao-de-wen-ti/#disqus_thread">Comments</a>
-    </article>
-  
-  
-    <article>
+  <footer>
+    <p class="meta">
       
-  <header>
+
+
+    </p>
     
-      <h1 class="entry-title"><a href="/blog/2012/08/27/teng-xun-kai-fang-ping-tai-apijie-kou-de-bian-ma-wen-ti/">腾讯开放平台API接口的编码问题</a>
     
-        <span class="author">
-          
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-08-27T15:47:00+08:00" pubdate data-updated="true">Aug 27<span>th</span>, 2012</time>
-          <br/>by subdragon
-        </span>
-      </h1>
-    
-      <p class="meta">
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>在接入腾讯开放平台oauth
-2.0的时候遇到了一个小编码问题。用python的requests库请求得到的用户信息里面的nickname总是乱码。经过调试，发现是腾讯的服务器没有遵守<a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec3.html#sec3.7.1">RFC
-2616</a>而导致。</p>
-
-<p><a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec3.html#sec3.7.1">RFC 2616</a>
-规定如果HTTP的header信息里面没有指定charset，并且Content-Type包含text的时候，默认的编码应该是ISO-8859-1。腾讯使用了UTF8编码，却没有在header显式指定charset，因此导致严格遵守标准的requests库解析出错。</p>
-
-<p>btw：requests对encoding的解析非常成熟，首先检查响应头的编码，其次会用chardet去猜内容的编码。</p>
-
-<p>以下是请求get_user_info的时候腾讯的api服务器返回的header信息：</p>
-
-<pre>
-<code>
-{'date': 'Mon, 27 Aug 2012 08:20:57 GMT', 'connection': 'keep-alive',
-'content-type': 'text/html', 'content-length': '367', 'server':
-'tnginx/1.0.1_r1'}
-</code>
-</pre>
-
-
-<p>看得出来，腾讯定制了nginx服务器。</p>
-
-<p>希望腾讯可以早点fix这个bug。</p>
-</div>
-  
-  
-
-
-      <a href="/blog/2012/08/27/teng-xun-kai-fang-ping-tai-apijie-kou-de-bian-ma-wen-ti/#disqus_thread">Comments</a>
-    </article>
-  
-  
-    <article>
+    <p class="meta">
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/08/03/ni-hao-octopress/">你好 Octopress</a>
-    
-        <span class="author">
-          
+        <a class="basic-alignment left" href="/blog/2012/08/27/teng-xun-kai-fang-ping-tai-apijie-kou-de-bian-ma-wen-ti/" title="Previous Post: 腾讯开放平台API接口的编码问题">&laquo; 腾讯开放平台API接口的编码问题</a>
+      
+      
+    </p>
+  </footer>
+</article>
 
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-08-03T16:27:00+08:00" pubdate data-updated="true">Aug 3<span>rd</span>, 2012</time>
-          <br/>by subdragon
-        </span>
-      </h1>
-    
-      <p class="meta">
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>你好 octopress.</p>
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 </div>
-  
-  
+  </section>
 
-
-      <a href="/blog/2012/08/03/ni-hao-octopress/#disqus_thread">Comments</a>
-    </article>
-  
-  <div class="pagination">
-    
-
-    
-  </div>
 </div>
+
+
 
     </div>
   </div>
@@ -266,7 +176,10 @@
       var disqus_shortname = 'subsbog';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://chenyin.github.com/blog/2012/09/08/jie-jue-pilku-de-jpegbao-de-wen-ti/';
+        var disqus_url = 'http://chenyin.github.com/blog/2012/09/08/jie-jue-pilku-de-jpegbao-de-wen-ti/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
